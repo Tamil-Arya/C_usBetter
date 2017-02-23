@@ -1,0 +1,79 @@
+//
+//  CuBLoginViewController.m
+//  C_usBetter
+//
+//  Created by Tamil Selvan R on 22/02/17.
+//  Copyright © 2017 Tamil Selvan R. All rights reserved.
+//
+
+#import "CuBLoginViewController.h"
+
+@interface CuBLoginViewController ()<UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *loginView;
+@property (weak, nonatomic) IBOutlet UITextField *email_TextField;
+@property (weak, nonatomic) IBOutlet UITextField *password_TextField;
+@property (weak, nonatomic) IBOutlet UIButton *login_Btn;
+@property (weak, nonatomic) IBOutlet UIButton *forget_Btn;
+@property (weak, nonatomic) IBOutlet UILabel *error_Label;
+
+- (IBAction)forget_Btn:(id)sender;
+- (IBAction)login_Btn:(id)sender;
+
+
+@end
+
+@implementation CuBLoginViewController
+@synthesize forget_Btn, login_Btn, password_TextField, email_TextField, loginView, error_Label;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UITapGestureRecognizer *hideKeyBoard=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyBoard)];
+    [self.view addGestureRecognizer:hideKeyBoard];
+   
+    // Do any additional setup after loading the view.
+}
+-(void)hideKeyBoard{
+    [email_TextField resignFirstResponder];
+    [password_TextField resignFirstResponder];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (IBAction)login_Btn:(id)sender {
+    
+    if ([email_TextField.text length] > 3) {
+        
+        if ([password_TextField.text length] > 3) {
+            
+            [self performSegueWithIdentifier:@"LoginVc" sender:self];
+            }
+        else{
+            error_Label.hidden=NO;
+            error_Label.text=@"Please enter valid password (ex : more than 3 letter)";
+            [self performSelector:@selector(hideErrorLabel) withObject:nil afterDelay:3.0];
+        }
+    }
+    else{
+        error_Label.hidden=NO;
+        error_Label.text=@"Please enter valid email id(ex : more than 3 letter)";
+        [self performSelector:@selector(hideErrorLabel) withObject:nil afterDelay:3.0];
+    }
+}
+-(void)hideErrorLabel{
+    error_Label.hidden=YES;
+}
+- (IBAction)forget_Btn:(id)sender {
+}
+@end

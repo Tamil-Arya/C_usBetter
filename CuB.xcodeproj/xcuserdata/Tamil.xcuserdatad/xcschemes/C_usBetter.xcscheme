@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "97E765421E5DF06C0096584F"
-               BuildableName = "C_usBetter.app"
-               BlueprintName = "C_usBetter"
-               ReferencedContainer = "container:C_usBetter.xcodeproj">
+               BuildableName = "CuB.app"
+               BlueprintName = "CuB"
+               ReferencedContainer = "container:CuB.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97E765421E5DF06C0096584F"
-            BuildableName = "C_usBetter.app"
-            BlueprintName = "C_usBetter"
-            ReferencedContainer = "container:C_usBetter.xcodeproj">
+            BuildableName = "CuB.app"
+            BlueprintName = "CuB"
+            ReferencedContainer = "container:CuB.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97E765421E5DF06C0096584F"
-            BuildableName = "C_usBetter.app"
-            BlueprintName = "C_usBetter"
-            ReferencedContainer = "container:C_usBetter.xcodeproj">
+            BuildableName = "CuB.app"
+            BlueprintName = "CuB"
+            ReferencedContainer = "container:CuB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97E765421E5DF06C0096584F"
-            BuildableName = "C_usBetter.app"
-            BlueprintName = "C_usBetter"
-            ReferencedContainer = "container:C_usBetter.xcodeproj">
+            BuildableName = "CuB.app"
+            BlueprintName = "CuB"
+            ReferencedContainer = "container:CuB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

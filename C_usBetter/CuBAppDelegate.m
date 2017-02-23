@@ -6,13 +6,13 @@
 //  Copyright © 2017 Tamil Selvan R. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "CuBAppDelegate.h"
 
-@interface AppDelegate ()
+@interface CuBAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation CuBAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

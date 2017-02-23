@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97E765481E5DF06D0096584F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765471E5DF06D0096584F /* main.m */; };
+		97E7654B1E5DF06D0096584F /* CuBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E7654A1E5DF06D0096584F /* CuBAppDelegate.m */; };
+		97E765511E5DF06D0096584F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E7654F1E5DF06D0096584F /* Main.storyboard */; };
+		97E765531E5DF06D0096584F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97E765521E5DF06D0096584F /* Assets.xcassets */; };
+		97E765561E5DF06D0096584F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E765541E5DF06D0096584F /* LaunchScreen.storyboard */; };
+		97E7655F1E5DF4B10096584F /* CuBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E7655E1E5DF4B10096584F /* CuBLoginViewController.m */; };
+		97E765621E5DF4C70096584F /* CuBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765611E5DF4C70096584F /* CuBHomeViewController.m */; };
+		97E765651E5DFE530096584F /* CuBActiveUserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765641E5DFE530096584F /* CuBActiveUserCollectionViewCell.m */; };
+		97E765691E5DFF990096584F /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E765661E5DFF990096584F /* female.png */; };
+		97E7656A1E5DFF990096584F /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E765671E5DFF990096584F /* male.png */; };
+		97E7656D1E5DFFE30096584F /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E7656C1E5DFFE30096584F /* profile.png */; };
+		97E7656F1E5E05090096584F /* Splash_Screen_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E7656E1E5E05090096584F /* Splash_Screen_01.png */; };
+		97E765721E5E0C310096584F /* CuBProfile_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765711E5E0C310096584F /* CuBProfile_ViewController.m */; };
+		97E765741E5E1A7C0096584F /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E765731E5E1A7C0096584F /* settings.png */; };
+		97E7657A1E5E31FD0096584F /* CuBNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765791E5E31FD0096584F /* CuBNotificationViewController.m */; };
+		97E7657D1E5E37B40096584F /* CuBWaitingRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E7657C1E5E37B40096584F /* CuBWaitingRideViewController.m */; };
+		97E765801E5E3F110096584F /* CuBStartedRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E7657F1E5E3F110096584F /* CuBStartedRideViewController.m */; };
+		97E765831E5E40550096584F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E765821E5E40550096584F /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		97E765431E5DF06D0096584F /* CuB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97E765471E5DF06D0096584F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		97E765491E5DF06D0096584F /* CuBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CuBAppDelegate.h; sourceTree = "<group>"; };
+		97E7654A1E5DF06D0096584F /* CuBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuBAppDelegate.m; sourceTree = "<group>"; };
+		97E765501E5DF06D0096584F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97E765521E5DF06D0096584F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97E765551E5DF06D0096584F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		97E765571E5DF06D0096584F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97E7655D1E5DF4B10096584F /* CuBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBLoginViewController.h; sourceTree = "<group>"; };
+		97E7655E1E5DF4B10096584F /* CuBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBLoginViewController.m; sourceTree = "<group>"; };
+		97E765601E5DF4C70096584F /* CuBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBHomeViewController.h; sourceTree = "<group>"; };
+		97E765611E5DF4C70096584F /* CuBHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBHomeViewController.m; sourceTree = "<group>"; };
+		97E765631E5DFE530096584F /* CuBActiveUserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CuBActiveUserCollectionViewCell.h; path = "Collection View Cell/CuBActiveUserCollectionViewCell.h"; sourceTree = "<group>"; };
+		97E765641E5DFE530096584F /* CuBActiveUserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CuBActiveUserCollectionViewCell.m; path = "Collection View Cell/CuBActiveUserCollectionViewCell.m"; sourceTree = "<group>"; };
+		97E765661E5DFF990096584F /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		97E765671E5DFF990096584F /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		97E7656C1E5DFFE30096584F /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		97E7656E1E5E05090096584F /* Splash_Screen_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash_Screen_01.png; sourceTree = "<group>"; };
+		97E765701E5E0C310096584F /* CuBProfile_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBProfile_ViewController.h; sourceTree = "<group>"; };
+		97E765711E5E0C310096584F /* CuBProfile_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBProfile_ViewController.m; sourceTree = "<group>"; };
+		97E765731E5E1A7C0096584F /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		97E765781E5E31FD0096584F /* CuBNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBNotificationViewController.h; sourceTree = "<group>"; };
+		97E765791E5E31FD0096584F /* CuBNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBNotificationViewController.m; sourceTree = "<group>"; };
+		97E7657B1E5E37B40096584F /* CuBWaitingRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBWaitingRideViewController.h; sourceTree = "<group>"; };
+		97E7657C1E5E37B40096584F /* CuBWaitingRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBWaitingRideViewController.m; sourceTree = "<group>"; };
+		97E7657E1E5E3F110096584F /* CuBStartedRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuBStartedRideViewController.h; sourceTree = "<group>"; };
+		97E7657F1E5E3F110096584F /* CuBStartedRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuBStartedRideViewController.m; sourceTree = "<group>"; };
+		97E765821E5E40550096584F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97E765401E5DF06C0096584F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97E765831E5E40550096584F /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97E7653A1E5DF06C0096584F = {
+			isa = PBXGroup;
+			children = (
+				97E765451E5DF06D0096584F /* C_usBetter */,
+				97E765441E5DF06D0096584F /* Products */,
+				97E765811E5E40550096584F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		97E765441E5DF06D0096584F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97E765431E5DF06D0096584F /* CuB.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97E765451E5DF06D0096584F /* C_usBetter */ = {
+			isa = PBXGroup;
+			children = (
+				97E765491E5DF06D0096584F /* CuBAppDelegate.h */,
+				97E7654A1E5DF06D0096584F /* CuBAppDelegate.m */,
+				97E7655D1E5DF4B10096584F /* CuBLoginViewController.h */,
+				97E7655E1E5DF4B10096584F /* CuBLoginViewController.m */,
+				97E765601E5DF4C70096584F /* CuBHomeViewController.h */,
+				97E765611E5DF4C70096584F /* CuBHomeViewController.m */,
+				97E765631E5DFE530096584F /* CuBActiveUserCollectionViewCell.h */,
+				97E765641E5DFE530096584F /* CuBActiveUserCollectionViewCell.m */,
+				97E765701E5E0C310096584F /* CuBProfile_ViewController.h */,
+				97E765711E5E0C310096584F /* CuBProfile_ViewController.m */,
+				97E765781E5E31FD0096584F /* CuBNotificationViewController.h */,
+				97E765791E5E31FD0096584F /* CuBNotificationViewController.m */,
+				97E7657B1E5E37B40096584F /* CuBWaitingRideViewController.h */,
+				97E7657C1E5E37B40096584F /* CuBWaitingRideViewController.m */,
+				97E7657E1E5E3F110096584F /* CuBStartedRideViewController.h */,
+				97E7657F1E5E3F110096584F /* CuBStartedRideViewController.m */,
+				97E7654F1E5DF06D0096584F /* Main.storyboard */,
+				97E7656E1E5E05090096584F /* Splash_Screen_01.png */,
+				97E765661E5DFF990096584F /* female.png */,
+				97E7656C1E5DFFE30096584F /* profile.png */,
+				97E765731E5E1A7C0096584F /* settings.png */,
+				97E765671E5DFF990096584F /* male.png */,
+				97E765521E5DF06D0096584F /* Assets.xcassets */,
+				97E765541E5DF06D0096584F /* LaunchScreen.storyboard */,
+				97E765571E5DF06D0096584F /* Info.plist */,
+				97E765461E5DF06D0096584F /* Supporting Files */,
+			);
+			path = C_usBetter;
+			sourceTree = "<group>";
+		};
+		97E765461E5DF06D0096584F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97E765471E5DF06D0096584F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97E765811E5E40550096584F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97E765821E5E40550096584F /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97E765421E5DF06C0096584F /* CuB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97E7655A1E5DF06D0096584F /* Build configuration list for PBXNativeTarget "CuB" */;
+			buildPhases = (
+				97E7653F1E5DF06C0096584F /* Sources */,
+				97E765401E5DF06C0096584F /* Frameworks */,
+				97E765411E5DF06C0096584F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CuB;
+			productName = C_usBetter;
+			productReference = 97E765431E5DF06D0096584F /* CuB.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97E7653B1E5DF06C0096584F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Tamil Selvan R";
+				TargetAttributes = {
+					97E765421E5DF06C0096584F = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L7G38S6868;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 97E7653E1E5DF06C0096584F /* Build configuration list for PBXProject "CuB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97E7653A1E5DF06C0096584F;
+			productRefGroup = 97E765441E5DF06D0096584F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97E765421E5DF06C0096584F /* CuB */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97E765411E5DF06C0096584F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97E765741E5E1A7C0096584F /* settings.png in Resources */,
+				97E765561E5DF06D0096584F /* LaunchScreen.storyboard in Resources */,
+				97E7656F1E5E05090096584F /* Splash_Screen_01.png in Resources */,
+				97E7656D1E5DFFE30096584F /* profile.png in Resources */,
+				97E7656A1E5DFF990096584F /* male.png in Resources */,
+				97E765531E5DF06D0096584F /* Assets.xcassets in Resources */,
+				97E765511E5DF06D0096584F /* Main.storyboard in Resources */,
+				97E765691E5DFF990096584F /* female.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97E7653F1E5DF06C0096584F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97E7657D1E5E37B40096584F /* CuBWaitingRideViewController.m in Sources */,
+				97E765621E5DF4C70096584F /* CuBHomeViewController.m in Sources */,
+				97E7657A1E5E31FD0096584F /* CuBNotificationViewController.m in Sources */,
+				97E7655F1E5DF4B10096584F /* CuBLoginViewController.m in Sources */,
+				97E7654B1E5DF06D0096584F /* CuBAppDelegate.m in Sources */,
+				97E765651E5DFE530096584F /* CuBActiveUserCollectionViewCell.m in Sources */,
+				97E765801E5E3F110096584F /* CuBStartedRideViewController.m in Sources */,
+				97E765481E5DF06D0096584F /* main.m in Sources */,
+				97E765721E5E0C310096584F /* CuBProfile_ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		97E7654F1E5DF06D0096584F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97E765501E5DF06D0096584F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		97E765541E5DF06D0096584F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97E765551E5DF06D0096584F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		97E765581E5DF06D0096584F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97E765591E5DF06D0096584F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97E7655B1E5DF06D0096584F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L7G38S6868;
+				INFOPLIST_FILE = C_usBetter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mySelf.C-usBetter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		97E7655C1E5DF06D0096584F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L7G38S6868;
+				INFOPLIST_FILE = C_usBetter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mySelf.C-usBetter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97E7653E1E5DF06C0096584F /* Build configuration list for PBXProject "CuB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97E765581E5DF06D0096584F /* Debug */,
+				97E765591E5DF06D0096584F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97E7655A1E5DF06D0096584F /* Build configuration list for PBXNativeTarget "CuB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97E7655B1E5DF06D0096584F /* Debug */,
+				97E7655C1E5DF06D0096584F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97E7653B1E5DF06C0096584F /* Project object */;
+}
