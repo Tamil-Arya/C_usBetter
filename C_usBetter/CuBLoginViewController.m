@@ -7,6 +7,7 @@
 //
 
 #import "CuBLoginViewController.h"
+#import "NetworkHandler.h"
 
 @interface CuBLoginViewController ()<UITextViewDelegate>
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *login_Btn;
 @property (weak, nonatomic) IBOutlet UIButton *forget_Btn;
 @property (weak, nonatomic) IBOutlet UILabel *error_Label;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progress;
 
 - (IBAction)forget_Btn:(id)sender;
 - (IBAction)login_Btn:(id)sender;
@@ -27,6 +29,7 @@
 @synthesize forget_Btn, login_Btn, password_TextField, email_TextField, loginView, error_Label;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.progress.hidden = YES;
     UITapGestureRecognizer *hideKeyBoard=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyBoard)];
     [self.view addGestureRecognizer:hideKeyBoard];
    
@@ -56,8 +59,18 @@
     if ([email_TextField.text length] > 3) {
         
         if ([password_TextField.text length] > 3) {
+            self.progress.hidden = NO;
             
-            [self performSegueWithIdentifier:@"LoginVc" sender:self];
+            [[NetworkHandler sharedInstance] loginUserwithDetails:@{@"Username":self.email_TextField.text,@"Password":self.password_TextField.text} withURL:@"Details/Login" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+                self.progress.hidden = YES;
+                if (!error) {
+                    [NetworkHandler sharedInstance].loginUserID = response[@"UserId"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self performSegueWithIdentifier:@"LoginVc" sender:self];
+                    });
+                    
+                }
+            }];
             }
         else{
             error_Label.hidden=NO;

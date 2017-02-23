@@ -7,9 +7,10 @@
 //
 
 #import "CuBAppDelegate.h"
+#import "NetworkHandler.h"
 
 @interface CuBAppDelegate ()
-
+@property(nonatomic,strong)CLLocationManager *locationManager;
 @end
 
 @implementation CuBAppDelegate
@@ -17,6 +18,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.locationManager.delegate = self;
+    [self.locationManager requestAlwaysAuthorization];
+    
+    //register for notifications
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!error) {
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+    }];
+
     return YES;
 }
 
@@ -47,5 +61,45 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+#pragma mark - Notification methods
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    NSString *deviceTokenString = [self stringWithDeviceToken:deviceToken];
+    [NetworkHandler sharedInstance].deviceToken = deviceTokenString;
+}
+
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    NSLog(@"Device token registration error : %@",error.description);
+}
+
+- (NSString *)stringWithDeviceToken:(NSData* )deviceToken {
+    const char *data = [deviceToken bytes];
+    NSMutableString *token = [NSMutableString string];
+    
+    for (NSUInteger i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    return [token copy];
+}
+
+
+#pragma mark - Location delegate methods
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+}
 
 @end

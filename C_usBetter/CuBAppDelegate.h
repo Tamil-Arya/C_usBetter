@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface CuBAppDelegate : UIResponder <UIApplicationDelegate>
+@interface CuBAppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

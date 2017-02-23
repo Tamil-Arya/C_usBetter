@@ -8,7 +8,7 @@
 
 #import "CuBHomeViewController.h"
 #import "CuBActiveUserCollectionViewCell.h"
-
+#import "NetworkHandler.h"
 
 
 @interface CuBHomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource,UITextViewDelegate >
@@ -63,6 +63,24 @@
     profileImageArray=[[ NSMutableArray alloc] initWithObjects:@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",nil];
       profileNameArray=[[ NSMutableArray alloc] initWithObjects:@"Tamil",@"Vishwa",@"Nithin",@"Rajesh",@"Manoj",@"Adithya",@"Pabitra",@"Nagesh",@"Vamshi",@"Kiran",@"Karthik",nil];
     // Do any additional setup after loading the view.
+    if ([NetworkHandler sharedInstance].deviceToken.length > 0) {
+        [[NetworkHandler sharedInstance] registerDeviceTokenWithDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Token":[NetworkHandler sharedInstance].deviceToken} withURL:@"details/SaveDeviceToken" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+            if (!error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Success" message:@"Device registered successfully" preferredStyle:UIAlertControllerStyleAlert];
+                    [alertVC addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:alertVC animated:YES completion:nil];
+                });
+            }
+        }];
+    }
+    else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Device registeration failed" preferredStyle:UIAlertControllerStyleAlert];
+            [alertVC addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertVC animated:YES completion:nil];
+        });
+    }
 }
 -(void)hideKeyBoard{
     [commnets_TextView resignFirstResponder];

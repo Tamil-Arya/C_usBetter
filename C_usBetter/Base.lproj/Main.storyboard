@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,13 +31,13 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikr-Se-U3I">
                                         <rect key="frame" x="32" y="154" width="310" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2G-0L-6ap">
                                         <rect key="frame" x="87" y="236" width="200" height="38"/>
@@ -74,6 +74,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aJe-M6-aqQ">
+                                        <rect key="frame" x="169" y="274" width="37" height="37"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.75167257466932802" blue="0.80217802226750123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -91,10 +95,12 @@
                                     <constraint firstItem="ikr-Se-U3I" firstAttribute="centerX" secondItem="f2G-0L-6ap" secondAttribute="centerX" id="WNw-gk-n8d"/>
                                     <constraint firstItem="uZ6-J8-6Nd" firstAttribute="centerX" secondItem="AIP-cJ-3fr" secondAttribute="centerX" id="b4M-4U-Eqk"/>
                                     <constraint firstItem="4Lm-D5-oij" firstAttribute="leading" secondItem="xJf-Gh-dhD" secondAttribute="leading" constant="32" id="cO2-2M-wyP"/>
+                                    <constraint firstItem="aJe-M6-aqQ" firstAttribute="centerX" secondItem="f2G-0L-6ap" secondAttribute="centerX" id="cr9-Jm-2vX"/>
                                     <constraint firstItem="4Lm-D5-oij" firstAttribute="top" secondItem="AIP-cJ-3fr" secondAttribute="bottom" constant="2" id="d8N-Qh-P7S"/>
                                     <constraint firstItem="f2G-0L-6ap" firstAttribute="top" secondItem="ikr-Se-U3I" secondAttribute="bottom" constant="42" id="d8T-ZL-U4n"/>
                                     <constraint firstAttribute="bottom" secondItem="f2G-0L-6ap" secondAttribute="bottom" constant="81" id="ewU-9X-Gls"/>
                                     <constraint firstItem="4Lm-D5-oij" firstAttribute="leading" secondItem="ikr-Se-U3I" secondAttribute="leading" id="hnn-1F-ECm"/>
+                                    <constraint firstItem="aJe-M6-aqQ" firstAttribute="top" secondItem="f2G-0L-6ap" secondAttribute="bottom" id="l5O-OR-9q5"/>
                                     <constraint firstItem="ikr-Se-U3I" firstAttribute="top" secondItem="4Lm-D5-oij" secondAttribute="bottom" constant="20" id="qDd-Rp-fsr"/>
                                 </constraints>
                             </view>
@@ -114,6 +120,7 @@
                         <outlet property="loginView" destination="xJf-Gh-dhD" id="li5-bu-dvE"/>
                         <outlet property="login_Btn" destination="f2G-0L-6ap" id="O4W-iQ-ia4"/>
                         <outlet property="password_TextField" destination="ikr-Se-U3I" id="yJ1-RL-6UD"/>
+                        <outlet property="progress" destination="aJe-M6-aqQ" id="6xE-Ex-4uG"/>
                         <segue destination="0A3-fv-Jfe" kind="presentation" identifier="LoginVc" id="O2U-33-pQG"/>
                     </connections>
                 </viewController>
