@@ -7,6 +7,7 @@
 //
 
 #import "CuBProfile_ViewController.h"
+#import "NetworkHandler.h"
 
 @interface CuBProfile_ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *profile_Title;
@@ -20,11 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    emailID_TextField.text=@"tamil.selvan@mobinius.com";
-    name_TextField.text=@"Tamil";
-    PhNumber_TextField.text=@"8050961727";
-    gender_TextField.text=@"Male";
-    
+    NSString *url = [NSString stringWithFormat:@"details/GetUserDetails?UserId=%@",[NetworkHandler sharedInstance].loginUserID];
+    [[NetworkHandler sharedInstance] getUserDetailsWithURL:url withMethod:@"GET" completionHandler:^(NSDictionary *response, NSError *error) {
+        if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
+            emailID_TextField.text=response[@"EmailId"];
+            name_TextField.text=response[@"FirstName"];
+            PhNumber_TextField.text=response[@"FirstName"];
+            gender_TextField.text=response[@"FirstName"];
+        }
+    }];
+
     emailID_TextField.enabled=NO;
     name_TextField.enabled=NO;
     PhNumber_TextField.enabled=NO;

@@ -12,6 +12,7 @@
 @interface CuBAppDelegate ()
 @property(nonatomic,strong)CLLocationManager *locationManager;
 @property(nonatomic,assign)BOOL isRemoteNotification;
+@property(nonatomic,strong)NSString *starterUserId;
 @end
 
 @implementation CuBAppDelegate
@@ -93,8 +94,7 @@
     NSDictionary *response = userInfo[@"aps"];
     if (response[@"content-available"]) {
         self.isRemoteNotification = YES;
-        NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];
-        NSString *loginUserId = [defaults valueForKey:@"UserId"];
+        self.starterUserId = response[@"UserId"];
         if (!self.locationManager) {
             self.locationManager = [[CLLocationManager alloc] init];
         }
@@ -119,9 +119,11 @@
     [NetworkHandler sharedInstance].userLocation = [locations firstObject];
     [self.locationManager stopUpdatingLocation];
     if (self.isRemoteNotification) {
+        NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];
+        NSString *loginUserId = [defaults valueForKey:@"UserId"];
         __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
         __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
-        [[NetworkHandler sharedInstance] saveLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        [[NetworkHandler sharedInstance] saveLocationDetails:@{@"StartRiderUserId":self.starterUserId,@"PickupRiderUserId":loginUserId,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/UpdateUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 NSLog(@"Updated the location");
             }

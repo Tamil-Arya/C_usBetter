@@ -8,7 +8,7 @@
 
 #import "CuBStartedRideViewController.h"
 #import <MapKit/MapKit.h>
-
+#import "NetworkHandler.h"
 @interface CuBStartedRideViewController ()
 - (IBAction)cancelRide_Btn:(id)sender;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -25,6 +25,15 @@
     self.locationManager.delegate = self;
     [self.locationManager requestAlwaysAuthorization];
     self.mapView.delegate = self;
+    
+//    [[NetworkHandler sharedInstance] getUserDetailsWithURL:url withMethod:@"GET" completionHandler:^(NSDictionary *response, NSError *error) {
+//        if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
+//            emailID_TextField.text=response[@"EmailId"];
+//            name_TextField.text=response[@"FirstName"];
+//            PhNumber_TextField.text=response[@"FirstName"];
+//            gender_TextField.text=response[@"FirstName"];
+//        }
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +52,11 @@
 */
 
 - (IBAction)cancelRide_Btn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NetworkHandler sharedInstance] endRideWithDetails:@{@"StartRiderUserId":[NetworkHandler sharedInstance].loginUserID,@"PickupRiderUserId":@0} withURL:@"details/EndRide" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
 }
 
 

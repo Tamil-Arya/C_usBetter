@@ -149,9 +149,12 @@
 
 - (IBAction)ride_Btn:(id)sender {
     [[NetworkHandler sharedInstance] startRideWithDetails:@{@"UserID":[NetworkHandler sharedInstance].loginUserID} withURL:@"details/StartRide" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"StartRide" sender:self];
+        });
         
     }];
-    [self performSegueWithIdentifier:@"StartRide" sender:self];
+    
 }
 
 

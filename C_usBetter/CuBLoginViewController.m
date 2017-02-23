@@ -56,9 +56,9 @@
 
 - (IBAction)login_Btn:(id)sender {
     
-    if ([email_TextField.text length] > 3) {
+    if ([email_TextField.text length] > 0) {
         
-        if ([password_TextField.text length] > 3) {
+        if ([password_TextField.text length] > 0) {
             self.progress.hidden = NO;
             
             [[NetworkHandler sharedInstance] loginUserwithDetails:@{@"Username":self.email_TextField.text,@"Password":self.password_TextField.text} withURL:@"Details/Login" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
@@ -82,13 +82,13 @@
             }
         else{
             error_Label.hidden=NO;
-            error_Label.text=@"Please enter valid password (ex : more than 3 letter)";
+            error_Label.text=@"Please enter valid password";
             [self performSelector:@selector(hideErrorLabel) withObject:nil afterDelay:3.0];
         }
     }
     else{
         error_Label.hidden=NO;
-        error_Label.text=@"Please enter valid email id(ex : more than 3 letter)";
+        error_Label.text=@"Please enter valid email id";
         [self performSelector:@selector(hideErrorLabel) withObject:nil afterDelay:3.0];
     }
 }
