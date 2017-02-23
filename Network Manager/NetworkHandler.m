@@ -85,4 +85,18 @@ static NetworkHandler *sharedContextManager = nil;
     [session resume];
 }
 
+
+//Update location
+-(void)updateLocationDetails:(NSDictionary *)locDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion{
+    NSString *servicePath = [kAPIURL stringByAppendingString:url];
+    NSMutableURLRequest *request = [self requestWithURL:servicePath httpMethod:method body:[self getDataFrom:locDetails]];
+    
+    NSURLSessionDataTask *session = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData  *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *response = [self getJSONfromData:data];
+            completion(response,nil);
+        }
+    }];
+    [session resume];
+}
 @end

@@ -63,12 +63,21 @@
     profileImageArray=[[ NSMutableArray alloc] initWithObjects:@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",@"male.png",nil];
       profileNameArray=[[ NSMutableArray alloc] initWithObjects:@"Tamil",@"Vishwa",@"Nithin",@"Rajesh",@"Manoj",@"Adithya",@"Pabitra",@"Nagesh",@"Vamshi",@"Kiran",@"Karthik",nil];
     // Do any additional setup after loading the view.
+    
+    [self registerDevice];
+    
+}
+
+-(void)registerDevice{
+    //Register the device
     if ([NetworkHandler sharedInstance].deviceToken.length > 0) {
         [[NetworkHandler sharedInstance] registerDeviceTokenWithDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Token":[NetworkHandler sharedInstance].deviceToken} withURL:@"details/SaveDeviceToken" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Success" message:@"Device registered successfully" preferredStyle:UIAlertControllerStyleAlert];
-                    [alertVC addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                    [alertVC addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self updateUserLocation];
+                    }]];
                     [self presentViewController:alertVC animated:YES completion:nil];
                 });
             }
@@ -80,6 +89,31 @@
             [alertVC addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alertVC animated:YES completion:nil];
         });
+    }
+}
+
+
+-(void)updateUserLocation{
+    if ([NetworkHandler sharedInstance].userLocation) {
+        
+        __block NSString * location;
+        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+        [geoCoder reverseGeocodeLocation:[NetworkHandler sharedInstance].userLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            CLPlacemark *place = placemarks.firstObject;
+            location = [NSString stringWithFormat:@"%@, %@",place.subLocality,place.locality];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.sourceLocation_TextField.text = location;
+            });
+        }];
+        
+        
+        __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
+        __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
+        [[NetworkHandler sharedInstance] updateLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+            if (!error) {
+                
+            }
+        }];
     }
 }
 -(void)hideKeyBoard{
