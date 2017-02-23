@@ -11,6 +11,10 @@
 		7E0642991E5F7688002C497F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0642981E5F7688002C497F /* UserModel.m */; };
 		7E06429C1E5F7CB8002C497F /* UserLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E06429B1E5F7CB8002C497F /* UserLocationModel.m */; };
 		7EA5F4AC1E5EC793007C5C15 /* NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA5F4AB1E5EC793007C5C15 /* NetworkHandler.m */; };
+		9711CEAE1E5F7803001803DF /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = 9711CEAA1E5F7803001803DF /* Login.png */; };
+		9711CEAF1E5F7803001803DF /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 9711CEAB1E5F7803001803DF /* Home.png */; };
+		9711CEB01E5F7803001803DF /* RideView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9711CEAC1E5F7803001803DF /* RideView.png */; };
+		9711CEB11E5F7803001803DF /* ProfileView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9711CEAD1E5F7803001803DF /* ProfileView.png */; };
 		97E765481E5DF06D0096584F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E765471E5DF06D0096584F /* main.m */; };
 		97E7654B1E5DF06D0096584F /* CuBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E7654A1E5DF06D0096584F /* CuBAppDelegate.m */; };
 		97E765511E5DF06D0096584F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E7654F1E5DF06D0096584F /* Main.storyboard */; };
@@ -44,6 +48,10 @@
 		7EA5F4AA1E5EC793007C5C15 /* NetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkHandler.h; sourceTree = "<group>"; };
 		7EA5F4AB1E5EC793007C5C15 /* NetworkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkHandler.m; sourceTree = "<group>"; };
 		96153164614E1472AD7D83BB /* Pods-CuB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CuB/Pods-CuB.debug.xcconfig"; sourceTree = "<group>"; };
+		9711CEAA1E5F7803001803DF /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
+		9711CEAB1E5F7803001803DF /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		9711CEAC1E5F7803001803DF /* RideView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RideView.png; sourceTree = "<group>"; };
+		9711CEAD1E5F7803001803DF /* ProfileView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileView.png; sourceTree = "<group>"; };
 		97E765431E5DF06D0096584F /* CuB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E765471E5DF06D0096584F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		97E765491E5DF06D0096584F /* CuBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CuBAppDelegate.h; sourceTree = "<group>"; };
@@ -126,6 +134,22 @@
 			path = "Network Manager";
 			sourceTree = "<group>";
 		};
+		9711CEB21E5F7812001803DF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				9711CEAA1E5F7803001803DF /* Login.png */,
+				9711CEAB1E5F7803001803DF /* Home.png */,
+				9711CEAC1E5F7803001803DF /* RideView.png */,
+				9711CEAD1E5F7803001803DF /* ProfileView.png */,
+				97E7656E1E5E05090096584F /* Splash_Screen_01.png */,
+				97E765661E5DFF990096584F /* female.png */,
+				97E7656C1E5DFFE30096584F /* profile.png */,
+				97E765731E5E1A7C0096584F /* settings.png */,
+				97E765671E5DFF990096584F /* male.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		97E7653A1E5DF06C0096584F = {
 			isa = PBXGroup;
 			children = (
@@ -168,11 +192,7 @@
 				97E7657E1E5E3F110096584F /* CuBStartedRideViewController.h */,
 				97E7657F1E5E3F110096584F /* CuBStartedRideViewController.m */,
 				97E7654F1E5DF06D0096584F /* Main.storyboard */,
-				97E7656E1E5E05090096584F /* Splash_Screen_01.png */,
-				97E765661E5DFF990096584F /* female.png */,
-				97E7656C1E5DFFE30096584F /* profile.png */,
-				97E765731E5E1A7C0096584F /* settings.png */,
-				97E765671E5DFF990096584F /* male.png */,
+				9711CEB21E5F7812001803DF /* Resource */,
 				97E765521E5DF06D0096584F /* Assets.xcassets */,
 				97E765541E5DF06D0096584F /* LaunchScreen.storyboard */,
 				97E765571E5DF06D0096584F /* Info.plist */,
@@ -272,8 +292,12 @@
 				97E765561E5DF06D0096584F /* LaunchScreen.storyboard in Resources */,
 				97E7656F1E5E05090096584F /* Splash_Screen_01.png in Resources */,
 				97E7656D1E5DFFE30096584F /* profile.png in Resources */,
+				9711CEB01E5F7803001803DF /* RideView.png in Resources */,
+				9711CEAE1E5F7803001803DF /* Login.png in Resources */,
+				9711CEB11E5F7803001803DF /* ProfileView.png in Resources */,
 				97E7656A1E5DFF990096584F /* male.png in Resources */,
 				97E765531E5DF06D0096584F /* Assets.xcassets in Resources */,
+				9711CEAF1E5F7803001803DF /* Home.png in Resources */,
 				97E765511E5DF06D0096584F /* Main.storyboard in Resources */,
 				97E765691E5DFF990096584F /* female.png in Resources */,
 			);
