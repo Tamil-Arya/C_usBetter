@@ -109,7 +109,7 @@
         
         __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
         __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
-        [[NetworkHandler sharedInstance] updateLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        [[NetworkHandler sharedInstance] saveLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 
             }
@@ -148,8 +148,13 @@
 }
 
 - (IBAction)ride_Btn:(id)sender {
+    [[NetworkHandler sharedInstance] startRideWithDetails:@{@"UserID":[NetworkHandler sharedInstance].loginUserID} withURL:@"details/StartRide" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        
+    }];
     [self performSegueWithIdentifier:@"StartRide" sender:self];
 }
+
+
 - (IBAction)setting_Btn:(id)sender {
   
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Settings" message:nil preferredStyle:UIAlertControllerStyleActionSheet];

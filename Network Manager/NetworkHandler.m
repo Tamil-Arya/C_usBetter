@@ -86,10 +86,24 @@ static NetworkHandler *sharedContextManager = nil;
 }
 
 
-//Update location
--(void)updateLocationDetails:(NSDictionary *)locDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion{
+//save location
+-(void)saveLocationDetails:(NSDictionary *)locDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion{
     NSString *servicePath = [kAPIURL stringByAppendingString:url];
     NSMutableURLRequest *request = [self requestWithURL:servicePath httpMethod:method body:[self getDataFrom:locDetails]];
+    
+    NSURLSessionDataTask *session = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData  *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *response = [self getJSONfromData:data];
+            completion(response,nil);
+        }
+    }];
+    [session resume];
+}
+
+//start ride
+-(void)startRideWithDetails:(NSDictionary *)riderDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion{
+    NSString *servicePath = [kAPIURL stringByAppendingString:url];
+    NSMutableURLRequest *request = [self requestWithURL:servicePath httpMethod:method body:[self getDataFrom:riderDetails]];
     
     NSURLSessionDataTask *session = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData  *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {

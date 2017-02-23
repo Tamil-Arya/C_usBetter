@@ -370,7 +370,7 @@
 				INFOPLIST_FILE = C_usBetter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mySelf.C-usBetter";
+				PRODUCT_BUNDLE_IDENTIFIER = mobinius.CuB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -384,7 +384,7 @@
 				INFOPLIST_FILE = C_usBetter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mySelf.C-usBetter";
+				PRODUCT_BUNDLE_IDENTIFIER = mobinius.CuB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

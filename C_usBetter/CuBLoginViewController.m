@@ -62,14 +62,22 @@
             self.progress.hidden = NO;
             
             [[NetworkHandler sharedInstance] loginUserwithDetails:@{@"Username":self.email_TextField.text,@"Password":self.password_TextField.text} withURL:@"Details/Login" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
-                self.progress.hidden = YES;
-                if (!error) {
-                    [NetworkHandler sharedInstance].loginUserID = response[@"UserId"];
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.progress.hidden = YES;
+                    if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
+                        [NetworkHandler sharedInstance].loginUserID = response[@"UserId"];
+                        NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];
+                        [defaults setObject:[NetworkHandler sharedInstance].loginUserID forKey:@"UserId"];
+                        [defaults synchronize];
                         [self performSegueWithIdentifier:@"LoginVc" sender:self];
-                    });
-                    
-                }
+                    }
+                    else{
+                        error_Label.hidden=NO;
+                        error_Label.text=response[@"ErrorMessage"];
+                        [self performSelector:@selector(hideErrorLabel) withObject:nil afterDelay:3.0];
+                    }
+                });
+                
             }];
             }
         else{

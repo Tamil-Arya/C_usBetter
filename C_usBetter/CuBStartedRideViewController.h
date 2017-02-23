@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface CuBStartedRideViewController : UIViewController
+@interface CuBStartedRideViewController : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate>
 
 @end

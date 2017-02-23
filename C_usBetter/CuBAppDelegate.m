@@ -11,6 +11,7 @@
 
 @interface CuBAppDelegate ()
 @property(nonatomic,strong)CLLocationManager *locationManager;
+@property(nonatomic,assign)BOOL isRemoteNotification;
 @end
 
 @implementation CuBAppDelegate
@@ -88,6 +89,19 @@
     return [token copy];
 }
 
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSDictionary *response = userInfo[@"aps"];
+    if (response[@"content-available"]) {
+        self.isRemoteNotification = YES;
+        NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];
+        NSString *loginUserId = [defaults valueForKey:@"UserId"];
+        if (!self.locationManager) {
+            self.locationManager = [[CLLocationManager alloc] init];
+        }
+        [self.locationManager startUpdatingLocation];
+    }
+}
+
 
 #pragma mark - Location delegate methods
 
@@ -104,6 +118,15 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     [NetworkHandler sharedInstance].userLocation = [locations firstObject];
     [self.locationManager stopUpdatingLocation];
+    if (self.isRemoteNotification) {
+        __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
+        __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
+        [[NetworkHandler sharedInstance] saveLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+            if (!error) {
+                NSLog(@"Updated the location");
+            }
+        }];
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{

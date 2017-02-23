@@ -12,6 +12,7 @@
 @interface CuBStartedRideViewController ()
 - (IBAction)cancelRide_Btn:(id)sender;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property(nonatomic,strong)CLLocationManager *locationManager;
 
 @end
 
@@ -20,6 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestAlwaysAuthorization];
+    self.mapView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,5 +44,86 @@
 
 - (IBAction)cancelRide_Btn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)zoom:(id)sender {
+    [self zoomToUserLocation];
+}
+
+#pragma mark - Location delegate methods
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        self.mapView.showsUserLocation = YES;
+    }
+}
+
+//func region(withGeotification geotification: Geotification) -> CLCircularRegion {
+//    // 1
+//    let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
+//    // 2
+//    region.notifyOnEntry = (geotification.eventType == .onEntry)
+//    region.notifyOnExit = !region.notifyOnEntry
+//    return region
+//}
+//
+//func startMonitoring(geotification: Geotification) {
+//    // 1
+//    if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+//        showAlert(withTitle:"Error", message: "Geofencing is not supported on this device!")
+//        return
+//    }
+//    // 2
+//    if CLLocationManager.authorizationStatus() != .authorizedAlways {
+//        showAlert(withTitle:"Warning", message: "Your geotification is saved but will only be activated once you grant Geotify permission to access the device location.")
+//    }
+//    // 3
+//    let region = self.region(withGeotification: geotification)
+//    // 4
+//    locationManager.startMonitoring(for: region)
+//}
+
+
+#pragma mark - MakpView
+//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay{
+//    
+//    if ([overlay isKindOfClass:[MKCircle class]]) {
+//        MKCircleRenderer *renderer = [[MKCircleRenderer alloc ]initWithCircle:overlay];
+//        renderer.lineWidth = 1.0;
+//        renderer.strokeColor = [UIColor purpleColor];
+//        renderer.fillColor = [[UIColor purpleColor] colorWithAlphaComponent:0.5];
+//        return renderer;
+//    }else{
+//        return [[MKOverlayRenderer alloc] initWithOverlay:overlay];
+//    }
+//    
+//}
+//
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+//    if ([annotation isKindOfClass:[GeaNotify class]]) {
+//        MKAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annoteIdentifier"];
+//        if (annotationView == nil) {
+//            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annoteIdentifier"];
+//            annotationView.canShowCallout = YES;
+//            UIButton *remove = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
+//            [remove setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+//            [annotationView setLeftCalloutAccessoryView:remove];
+//        }
+//        else{
+//            annotationView.annotation = annotation;
+//        }
+//        return annotationView;
+//    }
+//    return nil;
+//}
+
+
+-(void)zoomToUserLocation{
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = self.mapView.userLocation.coordinate;
+    mapRegion.span.latitudeDelta = 0.1;
+    mapRegion.span.longitudeDelta = 0.1;
+    
+    [self.mapView setRegion:mapRegion animated: YES];
 }
 @end
