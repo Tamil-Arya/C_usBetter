@@ -29,7 +29,14 @@
     //register for notifications
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
+    UNNotificationAction *yesAction = [UNNotificationAction actionWithIdentifier:@"ACCEPT" title:@"Accept" options:UNNotificationActionOptionForeground];
+    UNNotificationAction *noAction = [UNNotificationAction actionWithIdentifier:@"DECLINE" title:@"Reject" options:UNNotificationActionOptionForeground];
     
+    UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc] init];
+    [category setActions:@[yesAction,noAction] forContext:UIUserNotificationActionContextDefault];
+    [category setIdentifier:@"RIDE_SHARE"];
+    
+    [center setNotificationCategories:[NSSet setWithObject:category]];
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (!error) {
             [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -74,6 +81,9 @@
     [NetworkHandler sharedInstance].deviceToken = deviceTokenString;
 }
 
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    
+}
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     NSLog(@"Device token registration error : %@",error.description);
@@ -102,11 +112,28 @@
     }
 }
 
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    
+}
+
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler{
+    if ([identifier isEqualToString:@"ACCEPT"]) {
+        //Post an url
+    }
+}
+
 
 #pragma mark - Location delegate methods
 
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-    
+    [[NetworkHandler sharedInstance] sendRideRequest:@{@"StartRiderUserId":[NetworkHandler sharedInstance].loginUserID,@"PickupRiderUserId":region.identifier,@"RequestStatus":@1} withURL:@"details/SendRideRequest" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+        if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
+            
+        }
+        else{
+            NSLog(@"Start ride got an error:%@",response[@"ErrorMessage"]);
+        }
+    }];
 }
 
 

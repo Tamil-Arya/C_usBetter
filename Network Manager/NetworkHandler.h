@@ -27,4 +27,8 @@
 -(void)endRideWithDetails:(NSDictionary *)riderDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion;
 
 -(void)getUserDetailsWithURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion;
+
+-(void)getUserLocations:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSArray *response, NSError *error))completion;
+
+-(void)sendRideRequest:(NSDictionary *)riderDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion;
 @end

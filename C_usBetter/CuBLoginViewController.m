@@ -65,7 +65,7 @@
             [hud showAnimated:YES];
             [[NetworkHandler sharedInstance] loginUserwithDetails:@{@"Username":self.email_TextField.text,@"Password":self.password_TextField.text} withURL:@"Details/Login" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud showAnimated:YES];
+                    [hud showAnimated:NO];
                     if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
                         [NetworkHandler sharedInstance].loginUserID = response[@"UserId"];
                         NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];

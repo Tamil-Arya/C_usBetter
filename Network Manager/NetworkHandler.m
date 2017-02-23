@@ -143,4 +143,33 @@ static NetworkHandler *sharedContextManager = nil;
     }];
     [session resume];
 }
+
+//get user locations
+-(void)getUserLocations:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSArray *response, NSError *error))completion{
+    NSString *servicePath = [kAPIURL stringByAppendingString:url];
+    NSMutableURLRequest *request = [self requestWithURL:servicePath httpMethod:method body:nil];
+    
+    NSURLSessionDataTask *session = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData  *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSArray *response = [self getJSONfromData:data];
+            completion(response,nil);
+        }
+    }];
+    [session resume];
+}
+
+
+//Send ride request
+-(void)sendRideRequest:(NSDictionary *)riderDetails withURL:(NSString *)url withMethod:(NSString *)method completionHandler:(void(^)(NSDictionary *response, NSError *error))completion{
+    NSString *servicePath = [kAPIURL stringByAppendingString:url];
+    NSMutableURLRequest *request = [self requestWithURL:servicePath httpMethod:method body:[self getDataFrom:riderDetails]];
+    
+    NSURLSessionDataTask *session = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData  *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *response = [self getJSONfromData:data];
+            completion(response,nil);
+        }
+    }];
+    [session resume];
+}
 @end

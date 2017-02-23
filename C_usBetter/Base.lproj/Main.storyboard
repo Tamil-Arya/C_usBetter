@@ -768,6 +768,9 @@
                                 <state key="normal" title="Looking for Joiner">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectUser:" destination="A9k-Wr-Y5P" eventType="touchUpInside" id="DTz-mz-lxr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdn-JR-7gP">
                                 <connections>
