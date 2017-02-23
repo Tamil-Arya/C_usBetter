@@ -9,7 +9,7 @@
 #import "CuBHomeViewController.h"
 #import "CuBActiveUserCollectionViewCell.h"
 #import "NetworkHandler.h"
-
+#import "MBProgressHUD.h"
 
 @interface CuBHomeViewController () < UICollectionViewDelegate, UICollectionViewDataSource,UITextViewDelegate >
 
@@ -94,26 +94,31 @@
 
 
 -(void)updateUserLocation{
+    
+    
+    
     if ([NetworkHandler sharedInstance].userLocation) {
-        
-        __block NSString * location;
-        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-        [geoCoder reverseGeocodeLocation:[NetworkHandler sharedInstance].userLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            CLPlacemark *place = placemarks.firstObject;
-            location = [NSString stringWithFormat:@"%@, %@",place.subLocality,place.locality];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.sourceLocation_TextField.text = location;
-            });
-        }];
-        
-        
-        __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
-        __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
-        [[NetworkHandler sharedInstance] saveLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
-            if (!error) {
-                
-            }
-        }];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            // Do something...
+            __block NSString * location;
+            CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+            [geoCoder reverseGeocodeLocation:[NetworkHandler sharedInstance].userLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+                CLPlacemark *place = placemarks.firstObject;
+                location = [NSString stringWithFormat:@"%@, %@",place.subLocality,place.locality];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    self.sourceLocation_TextField.text = location;
+                });
+            }];
+            __block NSString * latitute =[[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.latitude] stringValue];
+            __block NSString * longitude = [[NSNumber numberWithDouble:[NetworkHandler sharedInstance].userLocation.coordinate.longitude] stringValue];
+            [[NetworkHandler sharedInstance] saveLocationDetails:@{@"UserId":[NetworkHandler sharedInstance].loginUserID,@"Latitude":latitute,@"Longitude":longitude} withURL:@"details/SaveUserLocation" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
+                if (!error) {
+                    
+                }
+            }];
+        });
     }
 }
 -(void)hideKeyBoard{

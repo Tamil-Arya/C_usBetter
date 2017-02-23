@@ -8,6 +8,7 @@
 
 #import "CuBLoginViewController.h"
 #import "NetworkHandler.h"
+#import "CuBHUDManager.h"
 
 @interface CuBLoginViewController ()<UITextViewDelegate>
 
@@ -59,11 +60,12 @@
     if ([email_TextField.text length] > 0) {
         
         if ([password_TextField.text length] > 0) {
-            self.progress.hidden = NO;
-            
+            //self.progress.hidden = NO;
+            MBProgressHUD *hud = [[CuBHUDManager sharedInstance] progressHudWithColor:[UIColor redColor] withView:self.view withMessage:@"Signing"];
+            [hud showAnimated:YES];
             [[NetworkHandler sharedInstance] loginUserwithDetails:@{@"Username":self.email_TextField.text,@"Password":self.password_TextField.text} withURL:@"Details/Login" withMethod:@"POST" completionHandler:^(NSDictionary *response, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.progress.hidden = YES;
+                    [hud showAnimated:YES];
                     if ([response[@"ErrorMessage"] isKindOfClass:[NSNull class]]) {
                         [NetworkHandler sharedInstance].loginUserID = response[@"UserId"];
                         NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"CuB"];

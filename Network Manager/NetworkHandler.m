@@ -7,7 +7,7 @@
 //
 
 #import "NetworkHandler.h"
-#define kAPIURL @"http://192.168.2.109:1709/api/"
+#define kAPIURL @"http://192.168.2.109:1711/api/"
 static NetworkHandler *sharedContextManager = nil;
 
 @implementation NetworkHandler
